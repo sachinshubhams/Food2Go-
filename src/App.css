@@ -1,0 +1,73 @@
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { font-family: -apple-system, sans-serif; background: #f7f7f7; color: #333; }
+.header { background: linear-gradient(135deg, #2196F3 0%, #42A5F5 100%); color: white; padding: 1rem 2rem; position: sticky; top: 0; z-index: 100; }
+.header-content { max-width: 1200px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; }
+.logo { font-size: 1.5rem; font-weight: bold; text-decoration: none; color: white; }
+.cart-icon { position: relative; cursor: pointer; font-size: 1.5rem; color: white; text-decoration: none; }
+.cart-badge { position: absolute; top: -8px; right: -8px; background: #1565C0; color: white; border-radius: 50%; width: 20px; height: 20px; display: flex; align-items: center; justify-content: center; font-size: 0.7rem; font-weight: bold; }
+.container { max-width: 1200px; margin: 0 auto; padding: 2rem; }
+.search-input { width: 100%; padding: 0.75rem 1rem; font-size: 1rem; border: 2px solid #ddd; border-radius: 8px; }
+.search-input:focus { border-color: #2196F3; outline: none; }
+.filter-chips { display: flex; gap: 0.5rem; margin: 1rem 0; flex-wrap: wrap; }
+.chip { padding: 0.5rem 1rem; background: white; border: 2px solid #ddd; border-radius: 20px; cursor: pointer; transition: all 0.3s; }
+.chip:hover { border-color: #2196F3; background: #E3F2FD; }
+.chip.active { background: #2196F3; color: white; border-color: #2196F3; }
+.restaurant-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 1.5rem; }
+.restaurant-card { background: white; border-radius: 12px; overflow: hidden; box-shadow: 0 2px 8px rgba(0,0,0,0.1); transition: transform 0.3s; cursor: pointer; text-decoration: none; color: inherit; }
+.restaurant-card:hover { transform: translateY(-4px); box-shadow: 0 4px 16px rgba(0,0,0,0.15); }
+.restaurant-image { width: 100%; height: 200px; object-fit: cover; }
+.restaurant-info { padding: 1rem; }
+.restaurant-name { font-size: 1.2rem; font-weight: bold; margin-bottom: 0.5rem; }
+.restaurant-details { display: flex; justify-content: space-between; color: #666; font-size: 0.9rem; margin-bottom: 0.5rem; }
+.rating { display: flex; align-items: center; gap: 0.25rem; }
+.menu-grid { display: grid; gap: 1rem; margin-top: 1.5rem; }
+.menu-item { background: white; padding: 1rem; border-radius: 8px; display: flex; gap: 1rem; box-shadow: 0 1px 4px rgba(0,0,0,0.1); }
+.menu-item-image { width: 100px; height: 100px; object-fit: cover; border-radius: 8px; }
+.menu-item-info { flex: 1; }
+.menu-item-name { font-size: 1.1rem; font-weight: bold; margin-bottom: 0.25rem; }
+.menu-item-description { color: #666; font-size: 0.9rem; margin-bottom: 0.5rem; }
+.menu-item-footer { display: flex; justify-content: space-between; align-items: center; }
+.price { font-size: 1.1rem; font-weight: bold; color: #2196F3; }
+.btn { padding: 0.75rem 1.5rem; border: none; border-radius: 8px; font-size: 1rem; font-weight: 600; cursor: pointer; transition: all 0.3s; }
+.btn-primary { background: #2196F3; color: white; }
+.btn-primary:hover { background: #1976D2; }
+.btn-primary:disabled { background: #ccc; cursor: not-allowed; }
+.btn-secondary { background: white; color: #2196F3; border: 2px solid #2196F3; }
+.btn-small { padding: 0.5rem 1rem; font-size: 0.9rem; }
+.cart-item { background: white; padding: 1rem; border-radius: 8px; display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem; }
+.quantity-controls { display: flex; align-items: center; gap: 1rem; }
+.quantity-btn { width: 30px; height: 30px; border: 2px solid #2196F3; background: white; color: #2196F3; border-radius: 50%; cursor: pointer; font-weight: bold; }
+.quantity-btn:hover { background: #2196F3; color: white; }
+.order-summary { background: white; padding: 1.5rem; border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.1); }
+.summary-row { display: flex; justify-content: space-between; margin-bottom: 0.75rem; }
+.summary-row.total { border-top: 2px solid #eee; padding-top: 0.75rem; font-weight: bold; font-size: 1.1rem; }
+.tracking-container { max-width: 600px; margin: 0 auto; }
+.order-status { background: white; padding: 2rem; border-radius: 12px; margin-bottom: 1.5rem; }
+.status-timeline { position: relative; padding-left: 2rem; }
+.status-item { position: relative; padding-bottom: 2rem; }
+.status-item::before { content: ''; position: absolute; left: -2rem; top: 0; width: 20px; height: 20px; border-radius: 50%; background: #ddd; border: 3px solid #ddd; }
+.status-item.completed::before { background: #4CAF50; border-color: #4CAF50; }
+.status-item.current::before { background: #2196F3; border-color: #2196F3; box-shadow: 0 0 0 4px rgba(33, 150, 243, 0.2); }
+.status-item::after { content: ''; position: absolute; left: -1.55rem; top: 20px; width: 2px; height: calc(100% - 20px); background: #ddd; }
+.status-item:last-child::after { display: none; }
+.status-item.completed::after { background: #4CAF50; }
+.map-placeholder { background: linear-gradient(135deg, #E3F2FD 0%, #BBDEFB 100%); height: 300px; border-radius: 12px; display: flex; align-items: center; justify-content: center; color: #666; margin-bottom: 1.5rem; }
+.rating-container { max-width: 500px; margin: 0 auto; background: white; padding: 2rem; border-radius: 12px; }
+.star-rating { display: flex; gap: 0.5rem; justify-content: center; margin: 1.5rem 0; }
+.star { font-size: 3rem; cursor: pointer; color: #ddd; transition: color 0.2s; }
+.star.filled { color: #FFB800; }
+.star:hover { color: #FFB800; }
+textarea { width: 100%; padding: 1rem; border: 2px solid #ddd; border-radius: 8px; font-family: inherit; font-size: 1rem; resize: vertical; min-height: 100px; }
+textarea:focus { outline: none; border-color: #2196F3; }
+.form-group { margin-bottom: 1.5rem; }
+.form-group label { display: block; margin-bottom: 0.5rem; font-weight: 600; }
+.form-group input, .form-group select { width: 100%; padding: 0.75rem; border: 2px solid #ddd; border-radius: 8px; font-size: 1rem; }
+.form-group input:focus, .form-group select:focus { outline: none; border-color: #2196F3; }
+.empty-state { text-align: center; padding: 4rem 2rem; color: #666; }
+.back-button { display: inline-flex; align-items: center; gap: 0.5rem; color: #2196F3; text-decoration: none; margin-bottom: 1.5rem; font-weight: 600; }
+.back-button:hover { text-decoration: underline; }
+@media (max-width: 768px) {
+  .container { padding: 1rem; }
+  .restaurant-grid { grid-template-columns: 1fr; }
+  .menu-item { flex-direction: column; }
+}
