@@ -1,0 +1,23 @@
+@startuml
+title University Registration System - Context Diagram - Level 0 DFD
+
+actor Student as student
+actor Professor as professor
+actor Registrar as registrar
+actor "Finance Dept" as finance
+
+component "University\nRegistration\nSystem" as system
+
+student --> system : Course Search,\nRegistration Request,\nPayment
+system --> student : Course List,\nEnrollment Confirmation,\nBill, Receipt
+
+professor --> system : Grade Submission
+system --> professor : Class Roster
+
+registrar --> system : Course Updates
+system --> registrar : Enrollment Reports
+
+system --> finance : Payment Information
+finance --> system : Payment Confirmation
+
+@enduml

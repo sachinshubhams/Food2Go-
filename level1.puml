@@ -1,0 +1,44 @@
+@startuml
+title University Registration System - Level 1 DFD
+left to right direction
+
+' External Entities
+actor Student as student
+actor Registrar as registrar
+actor "Finance\nDept" as finance
+
+' Processes in sequence
+(1.0\nBrowse\nCourses) as p1
+(2.0\nRegister\nStudent) as p2
+(3.0\nGenerate\nBill) as p3
+(4.0\nProcess\nPayment) as p4
+
+' Data Stores
+database "Course\nCatalog" as d1
+database "Student\nRecords" as d2
+database "Enrollment\nRecords" as d3
+database "Billing\nRecords" as d4
+
+' Sequential flow
+student --> p1 : Search
+p1 <--> d1 : Course Data
+p1 --> student : Course List
+
+student --> p2 : Register
+p2 <--> d2 : Student Info
+p2 --> d3 : Enrollment
+p2 --> student : Confirmation
+
+p2 --> p3 : Trigger Bill
+p3 --> d4 : Save Bill
+p3 --> student : Bill Amount
+
+student --> p4 : Payment
+p4 --> d4 : Payment Record
+p4 --> finance : Payment
+p4 --> student : Receipt
+
+registrar --> d1 : Updates
+d3 --> registrar : Reports
+
+@enduml
