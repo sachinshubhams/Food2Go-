@@ -1,0 +1,94 @@
+@startuml
+title Readers' Haven Online Bookstore - UML Class Diagram
+
+' User class (simplified - no inheritance)
+class User {
+  - UserID : String
+  - Name : String
+  - Email : String
+  - Address : String
+  - UserType : String
+  - ReadingPreferences : String
+  + login() : boolean
+  + updateProfile() : void
+  + browseBooks() : List<Book>
+}
+
+' Book class
+class Book {
+  - BookID : String
+  - Title : String
+  - Author : String
+  - Genre : String
+  - Price : decimal
+  - Availability : String
+  + getDetails() : BookDetails
+  + updateAvailability() : void
+}
+
+' Transaction class (simplified - no inheritance)
+class Transaction {
+  - TransactionID : String
+  - UserID : String
+  - BookID : String
+  - TransactionDate : Date
+  - TransactionType : String
+  - TotalAmount : decimal
+  + processTransaction() : boolean
+  + calculateTotal() : decimal
+}
+
+' Review class
+class Review {
+  - ReviewID : String
+  - UserID : String
+  - BookID : String
+  - Rating : int
+  - Comment : String
+  - ReviewDate : Date
+  + submitReview() : boolean
+  + editReview() : void
+}
+
+' RecommendationSystem class
+class RecommendationSystem {
+  - RecommendationID : String
+  - UserID : String
+  + generateRecommendations() : List<Book>
+  + analyzePreferences() : void
+}
+
+' Relationships
+User "1" -- "0..*" Transaction : makes >
+User "1" -- "0..*" Review : writes >
+User "1" -- "1" RecommendationSystem : has >
+
+Book "1" -- "0..*" Transaction : involved in >
+Book "1" -- "0..*" Review : receives >
+
+Transaction "1" -- "1" Book : contains >
+Review "1" -- "1" Book : about >
+
+RecommendationSystem "1" -- "0..*" Book : recommends >
+
+note right of User
+  UserType can be:
+  "Customer" or "Admin"
+end note
+
+note right of Transaction
+  TransactionType can be:
+  "Purchase" or "Rental"
+end note
+
+legend right
+  **Cardinality:**
+  1 = One
+  0..* = Zero or many
+
+  **Visibility:**
+  + = Public
+  - = Private
+endlegend
+
+@enduml
